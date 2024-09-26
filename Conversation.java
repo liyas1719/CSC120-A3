@@ -1,4 +1,5 @@
 import java.util.Scanner; 
+import java.util.Random;
 class Conversation {
 
   public static void main(String[] arguments) {
@@ -9,24 +10,23 @@ class Conversation {
 
     int roundnum = rounds.nextInt();
 
-    Scanner prompt = new Scanner(System.in);
-    System.out.println("hi there! what's on your mind?");
-
-    //String prompt1 = prompt.nextLine(); 
-
-  for (int i = 0; i < roundnum; i++) {
+    System.out.println("hi there! what's on your mind?"); 
+    int m = 0;
+    String[] transcript = new String[(roundnum*2)+1];
+    transcript[m] = "hi there! what's on your mind?";
+    m = m+1;
+    
+  for (int i = 0; i <= roundnum; i++) {
     Scanner answer = new Scanner(System.in);
     String answer2  =  answer.nextLine(); 
     String[] answer2components = answer2.split(" ");
-    int m = 0;
-    String[] transcript = new String[roundnum*2];
+    //String[] transcript = new String[roundnum*2 -1 ];
     transcript[m] = answer2;
+    System.out.println(m + transcript[m]);
     m = m+1;
     int answer2size = answer2components.length;
-    for (int j = 0; j < answer2size-1; j++) {
-      if (answer2components[j].equals("yes")) {
-        
-      } else if (answer2components[j].equals("i")) {
+    for (int j = 0; j < answer2size; j++) {
+      if (answer2components[j].equals("i")) {
         answer2components[j] = "you";
       } else if (answer2components[j].equals("I")) {
         answer2components[j] = "you";
@@ -49,20 +49,56 @@ class Conversation {
       } else if (answer2components[j].equals("your")) {
         answer2components[j] = "my";
       } else {
-      }}
-      //answer2components + "?";
-      String finalresponse = String.join(" ", answer2components) + "?";
-      transcript[m] = finalresponse;
+        int p = 0;
+        p = p+1;
+          if (p == answer2size-2) {
+            String[] otherresponses = {
+            "I love that! Share more!",
+            "I understand, what more can you tell me?",
+           "It will be okay!",
+           "That is awesome!"
+          }; 
+            Random random = new Random();
+            int selectedresponse = random.nextInt(otherresponses.length);
+            answer2 = otherresponses[selectedresponse];
+            answer2components = answer2.split(" ");
+        
+        }}
+       
+      if (j == answer2size-1) {
+        String outputresponseString = String.join(" ", answer2components) + "?"; 
+    System.out.println("t" + transcript[0]);
+    System.out.println("t" + transcript[1]);
+    System.out.println("t" + transcript[2]);
+    System.out.println("t" + transcript[3]);
+    System.out.println("t" + transcript[4]);
+    System.out.println("t" + transcript[5]);
+    if (i < roundnum-1) {
+      transcript[m] = outputresponseString;
+      System.out.println(m + transcript[m]);
       m = m+1;
-      System.out.print(finalresponse);
-    String finaltranscript = String.join("        ", transcript);
-    //System.out.println(finaltranscript);
+      System.out.println(outputresponseString);}
+    if (i == roundnum - 1) {
+          System.out.println("that's so cool, goodbye!"); 
+          System.out.println("Transcript:");
+          transcript[m+1] = "that's so cool, goodbye!";
+          int transcriptsize = transcript.length;
+          for (int t = 0; t <= transcriptsize; t++) {
+            System.out.println(t + transcript[t]);}
+          }
+          //String finaltranscript = String.join("        ", transcript);
+          //System.out.println(finaltranscript);}
+      }
+    // else if (i == roundnum) {
+    //   System.out.print("Transcript:");
+    //   String finaltranscript = String.join("        ", transcript);
+    //   System.out.println(finaltranscript);}}
   // IF VARIABLE EQUALS NUM ROUJNDS THENNNNNNN OD OTHIS
-      System.out.println("that's so cool! goodbye!");
-      System.out.println();
-      System.out.println("transcript:");
-      //String finaltranscript = String.join(" ", transcript);
-      System.out.println(finaltranscript);
-  }}}
+  //     System.out.println("that's so cool! goodbye!");
+  //     System.out.println();
+  //     System.out.println("transcript:");
+  //     //String finaltranscript = String.join(" ", transcript);
+  //     System.out.println(finaltranscript);
+    }}}}
 
   
