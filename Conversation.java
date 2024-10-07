@@ -6,6 +6,12 @@ class Conversation {
   public static void main(String[] arguments) {
     
     ArrayList<String> transcriptt = new ArrayList<String>();
+    String[] otherresponses = { // canned responses
+      "I love that! Share more!",
+      "I understand, what more can you tell me?",
+     "It will be okay!",
+     "That is awesome!"
+    };
     //asking for  user input for number of rounds
     Scanner rounds = new Scanner(System.in);
     System.out.println("how many rounds should we play?");
@@ -73,12 +79,6 @@ class Conversation {
       } else {
         if (p ==0) {
           if (j == answer2size-1) { // if none of the words are mirror words
-            String[] otherresponses = { // canned responses
-            "I love that! Share more!",
-            "I understand, what more can you tell me?",
-           "It will be okay!",
-           "That is awesome!"
-          }; 
             Random random = new Random();
             int selectedresponse = random.nextInt(otherresponses.length); // select a canned response randomly
             answer2 = otherresponses[selectedresponse]; // setting that as the new answer
